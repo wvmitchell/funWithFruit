@@ -1,14 +1,14 @@
 import _ from 'lodash'
 
 export const compileFruits = (fruitObjects) => (
-  _.reduce(fruitObjects, (accumulation, fruitObject) => (
-    addCleanedFruits(cleanAllFruit(fruitObject), accumulation)
+  _.reduce(fruitObjects, (accu, fruitObject) => (
+    addCleanedFruits(cleanAllFruit(fruitObject), accu)
   ), {})
 )
 
 const cleanAllFruit = (fruitObject) => (
-  _.reduce(fruitObject, (accumulation, numOfFruit, fruit) => (
-    Object.assign({[fruit]: cleanSingleFruit(numOfFruit)}, accumulation)
+  _.reduce(fruitObject, (accu, numOfFruit, fruit) => (
+    Object.assign({[fruit]: cleanSingleFruit(numOfFruit)}, accu)
   ), {})
 )
 
