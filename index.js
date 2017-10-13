@@ -6,6 +6,13 @@ export const compileFruits = (fruitObjects) => (
   ), {})
 )
 
+const addCleanedFruits = (fruitsToAdd, allFruits) => (
+  _.reduce(fruitsToAdd, (accu, numFruit, fruit) => {
+    accu[fruit] ? accu[fruit] += numFruit : accu[fruit] = numFruit
+    return allFruits
+  }, allFruits)
+)
+
 const cleanAllFruit = (fruitObject) => (
   _.reduce(fruitObject, (accu, numOfFruit, fruit) => (
     Object.assign({[fruit]: cleanSingleFruit(numOfFruit)}, accu)
@@ -24,9 +31,3 @@ const reduceOneFruit = (fruit) => (
   _.reduce(fruit, (acc, numFruit, type) => acc + numFruit, 0)
 )
 
-const addCleanedFruits = (fruitsToAdd, allFruits) => (
-  _.reduce(fruitsToAdd, (accu, numFruit, fruit) => {
-    accu[fruit] ? accu[fruit] += numFruit : accu[fruit] = numFruit
-    return allFruits
-  }, allFruits)
-)
